@@ -7,7 +7,7 @@ entity ula is
 		port (
 				A, B	: in std_logic_vector(DATA_WIDTH -1 downto 0);
 				op  	: in std_logic_vector(3 downto 0);
-				result: out std_logic_vector(DATA_WIDTH -1 downto 0);
+				result: out std_logic_vector(DATA_WIDTH -1 downto 0)
 		);
 end entity ula;
 
