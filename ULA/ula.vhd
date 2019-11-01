@@ -24,10 +24,49 @@ signal   B_vezes: STD_LOGIC;
 
 begin
 
-		sinal_default <= "0";
-		B_vezes <= unsigned(B);
+------------------------------------------------- process aqui
 
-		--fazemos os sinais valerem seus devidos valores aqui, aí ligamos eles na saída
+	process(op)
+		begin
+
+			sinal_A_menor_com_sinal <= (others => '0');
+			if (signed(A) < signed(B)) then
+					sinal_A_menor_com_sinal(0) <= '1';
+			end if;
+
+			sinal_A_menor_sem_sinal <= (others => '0');
+			if (unsigned(A) < unsigned(B)) then
+					sinal_A_menor_sem_sinal(0) <= '1';
+			end if;
+
+			sinal_A_igual_B <= (others => '0');
+			if (unsigned(A) = unsigned(B)) then
+					sinal_A_igual_B(0) <= '1';
+			end if;
+
+			sinal_A_dif_B <= (others => '0');
+			if (unsigned(A) /= unsigned(B)) then
+					sinal_A_dif_B(0) <= '1';
+			end if;
+
+			sinal_A_maiorigual_B_com_sinal <= (others => '0');
+			if (signed(A) >= signed(B)) then
+					sinal_A_maiorigual_B_com_sinal(0) <= '1';
+			end if;
+
+			sinal_A_maiorigual_B_sem_sinal <= (others => '0');
+			if (unsigned(A) >= unsigned(B)) then
+					sinal_A_maiorigual_B_sem_sinal(0) <= '1';
+			end if;
+
+		end process;
+
+---------------------------------------- process termina aqui
+
+
+
+		sinal_default <= (others => '0');
+		B_vezes <= unsigned(B);
 
 		result <= std_logic_vector(signed(A) + signed(B))		when op="0000" else
 							std_logic_vector(signed(A) - signed(B))		when op="0001" else
