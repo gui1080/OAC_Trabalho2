@@ -63,7 +63,7 @@ begin
 
 ---------------------------------------- process termina aqui
 
-sinal_default <= (others => '0');
+sinal_default <= (others => '1');
 
 result <= std_logic_vector(signed(A) + signed(B))												when op="0000" else
 					std_logic_vector(signed(A) - signed(B))										when op="0001" else
@@ -72,9 +72,9 @@ result <= std_logic_vector(signed(A) + signed(B))												when op="0000" else
 					sinal_A_menor_sem_sinal 															when op="0100" else
 					std_logic_vector(unsigned(A) xor unsigned(B)) 								when op="0101" else
 					std_logic_vector(shift_right(unsigned(A), to_integer(unsigned(B)))) 	when op="0110" else
-					std_logic_vector(shift_right(signed(A), to_integer(unsigned(B)))) 	when op="0110" else
-					std_logic_vector(unsigned(A) or unsigned(B)) 								when op="0101" else
-					std_logic_vector(unsigned(A) and unsigned(B)) 								when op="0101" else
+					std_logic_vector(shift_right(signed(A), to_integer(unsigned(B)))) 	when op="0111" else
+					std_logic_vector(A or B) 															when op="1000" else
+					std_logic_vector(A and B) 															when op="1001" else
 					sinal_A_igual_B 																		when op="1010" else
 					sinal_A_dif_B 																			when op="1011" else
 					sinal_A_maiorigual_B_com_sinal 													when op="1100" else
