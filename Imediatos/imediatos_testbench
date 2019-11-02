@@ -1,0 +1,89 @@
+--------------------------------------------------------------------------------
+-- Company: 
+-- Engineer:
+--
+-- Create Date:   23:21:40 11/01/2019
+-- Design Name:   
+-- Module Name:   /home/castorzaum/Documents/Projetos/SD/Projetos ISE/gerador_de_imediatos/imediatos_testbench.vhd
+-- Project Name:  gerador_de_imediatos
+-- Target Device:  
+-- Tool versions:  
+-- Description:   
+-- 
+-- VHDL Test Bench Created by ISE for module: imediatos
+-- 
+-- Dependencies:
+-- 
+-- Revision:
+-- Revision 0.01 - File Created
+-- Additional Comments:
+--
+-- Notes: 
+-- This testbench has been automatically generated using types std_logic and
+-- std_logic_vector for the ports of the unit under test.  Xilinx recommends
+-- that these types always be used for the top-level I/O of a design in order
+-- to guarantee that the testbench will bind correctly to the post-implementation 
+-- simulation model.
+--------------------------------------------------------------------------------
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+ 
+-- Uncomment the following library declaration if using
+-- arithmetic functions with Signed or Unsigned values
+--USE ieee.numeric_std.ALL;
+ 
+ENTITY imediatos_testbench IS
+END imediatos_testbench;
+ 
+ARCHITECTURE behavior OF imediatos_testbench IS 
+ 
+    -- Component Declaration for the Unit Under Test (UUT)
+ 
+    COMPONENT imediatos
+    PORT(
+         inst : IN  std_logic_vector(31 downto 0);
+         imm32 : OUT  std_logic_vector(31 downto 0)
+        );
+    END COMPONENT;
+    
+
+   --Inputs
+   signal inst : std_logic_vector(31 downto 0) := (others => '0');
+
+ 	--Outputs
+   signal imm32 : std_logic_vector(31 downto 0);
+   -- No clocks detected in port list. Replace <clock> below with 
+   -- appropriate port name 
+ 
+BEGIN
+ 
+	-- Instantiate the Unit Under Test (UUT)
+   uut: imediatos PORT MAP (
+          inst => inst,
+          imm32 => imm32
+        );
+ 
+
+   -- Stimulus process
+   process
+   begin		
+      
+	-- TESTE TIPO R
+	
+	inst <= "00000000000000000000001010110011";
+	
+	wait for 20 ns;
+	
+	assert(imm32 = "00000000000000000000000000000000") report "Falhou: - tipo r" severity ERROR;
+		
+	-- TESTE TIPO S
+	
+	inst <= "00000010010101000010111000100011";
+	
+	wait for 20 ns;
+	
+	assert(imm32 = "00000000000000000000000000111100") report "Falhou: - tipo s" severity ERROR;
+		
+   end process;
+
+END behavior;
