@@ -5,7 +5,7 @@
 --
 -- Nome: Gabriel Matheus			Matrícula: 17/0103498
 -- Nome: Guilherme Braga			Matrícula: 17/0162290
--- Nome: Victor Eduardo			  Matrícula: 17/0115127
+-- Nome: Victor Eduardo			   Matrícula: 17/0115127
 --
 -- Link para o trabalho no Github --> https://github.com/therealguib545/OAC_Trabalho2
 --
@@ -33,8 +33,6 @@ ARCHITECTURE behavior OF imediatos_testbench IS
 
  	--Outputs
    signal imm32 : std_logic_vector(31 downto 0);
-   -- No clocks detected in port list. Replace <clock> below with
-   -- appropriate port name
 
 BEGIN
 
@@ -84,7 +82,7 @@ BEGIN
 
 	wait for 20 ns;
 
-	assert(imm32 = "11111111111111111111111111110000") report "Falhou: - tipo b" severity ERROR;
+	assert(imm32 = "11111111111111111111111111100000") report "Falhou: - tipo b" severity ERROR;
 
 
   -- TESTE TIPO U
@@ -105,7 +103,6 @@ BEGIN
 	wait for 20 ns;
 
 	assert(imm32 = "00000000000000000000000000001100") report "Falhou: - tipo j" severity ERROR;
-
 
    end process;
 
