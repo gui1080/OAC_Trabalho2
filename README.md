@@ -4,6 +4,8 @@ Professor: Marcelo Grandi Mandelli
 
 Entrega: 10/10/2019
 
+Executado no ISE Webpack e posteriormente portado para o Quartus. 
+
 # Alunos:
 
 Gabriel Matheus- 17/0103498, https://github.com/Shudugen
