@@ -54,13 +54,13 @@ begin
 
 	-- TESTE SUM OP 0000
 
-	A <= ("00000000000000000000000000001010");
-	B <= ("00000000000000000000000000000101");
+	A <= ("01001110000001000001000011001010");
+	B <= ("00001000011000000001000001100101");
 	op <= "0000";
 
 	wait for 20 ns;
 
-	assert(result = "00000000000000000000000000001111") report "Falhou: op = 0000 - SUM" severity ERROR;
+	assert(result = "01010110011001000010000100101111") report "Falhou: op = 0000 - SUM" severity ERROR;
 
 	-- TESTE SUB OP 0001
 
@@ -68,18 +68,22 @@ begin
 
 	wait for 20 ns;
 
-	assert(result = "00000000000000000000000000000101") report "Falhou: op = 0001 - SUB" severity ERROR;
+	assert(result = "01000101101001000000000001100101") report "Falhou: op = 0001 - SUB" severity ERROR;
 
 	-- TESTE SHIFT LEFT OP 0010
 
+	A <= ("01001110000001000001000011001010");
+	B <= ("00000000000000000000000000000101");
 	op <= "0010";
 
 	wait for 20 ns;
 
-	assert(result = "00000000000000000000000101000000") report "Falhou: op = 0010 - SHIFT LEFT" severity ERROR;
+	assert(result = "11000000100000100001100101000000") report "Falhou: op = 0010 - SHIFT LEFT" severity ERROR;
 
 	-- TESTE A < B -SIGNED OP 0011
 
+	A <= ("01001110000001000001000011001010");
+	B <= ("00001000011000000001000001100101");
 	op <= "0011";
 
 	wait for 20 ns;
@@ -100,15 +104,17 @@ begin
 
 	wait for 20 ns;
 
-	assert(result = "00000000000000000000000000001111") report "Falhou: op = 0101 - A XOR B" severity ERROR;
+	assert(result = "01000110011001000000000010101111") report "Falhou: op = 0101 - A XOR B" severity ERROR;
 
 	-- TESTE A SHIFT RIGHT LOGIC B OP 0110
 
+	A <= ("01001110000001000001000011001010");
+	B <= ("00000000000000000000000000000101");
 	op <= "0110";
 
 	wait for 20 ns;
 
-	assert(result = "00000000000000000000000000000000") report "Falhou: op = 0110 - A SHIFT RIGHT LOGIC B" severity ERROR;
+	assert(result = "00000010011100000010000010000110") report "Falhou: op = 0110 - A SHIFT RIGHT LOGIC B" severity ERROR;
 
 	-- TESTE A SHIFT RIGHT ARITH B OP 0111
 
@@ -116,15 +122,17 @@ begin
 
 	wait for 20 ns;
 
-	assert(result = "00000000000000000000000000000000") report "Falhou: op = 0111 - A SHIFT RIGHT ARITH B" severity ERROR;
+	assert(result = "00000010011100000010000010000110") report "Falhou: op = 0111 - A SHIFT RIGHT ARITH B" severity ERROR;
 
 	-- TESTE A OR B OP 1000
 
+	A <= ("01001110000001000001000011001010");
+	B <= ("00001000011000000001000001100101");
 	op <= "1000";
 
 	wait for 20 ns;
 
-	assert(result = "00000000000000000000000000001111") report "Falhou: op = 1000 - A OR B" severity ERROR;
+	assert(result = "01001110011001000001000011101111") report "Falhou: op = 1000 - A OR B" severity ERROR;
 
 	-- TESTE A AND B OP 1001
 
@@ -132,18 +140,22 @@ begin
 
 	wait for 20 ns;
 
-	assert(result = "00000000000000000000000000000000") report "Falhou: op = 1001 - A AND B" severity ERROR;
+	assert(result = "00001000000000000001000001000000") report "Falhou: op = 1001 - A AND B" severity ERROR;
 
+	A <= ("01001110000001000001000011001010");
+	B <= ("01001110000001000001000011001010");
 	-- TESTE A EQUAL B OP 1010
 
 	op <= "1010";
 
 	wait for 20 ns;
 
-	assert(result = "00000000000000000000000000000000") report "Falhou: op = 1010 - A EQUAL B" severity ERROR;
+	assert(result = "00000000000000000000000000000001") report "Falhou: op = 1010 - A EQUAL B" severity ERROR;
 
 	-- TESTE A NOT EQUAL B OP 1011
 
+	A <= ("01001110000001000001000011001010");
+	B <= ("00001000011000000001000001100101");
 	op <= "1011";
 
 	wait for 20 ns;
