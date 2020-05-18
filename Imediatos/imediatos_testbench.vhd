@@ -7,7 +7,7 @@
 -- Nome: Guilherme Braga			Matrícula: 17/0162290
 -- Nome: Victor Eduardo			   Matrícula: 17/0115127
 --
--- Link para o trabalho no Github --> https://github.com/therealguib545/OAC_Trabalho2
+-- Link para o trabalho no Github --> https://github.com/gui1080/OAC_Trabalho2
 --
 ---------------------------------------------------------------------------------------------
 
